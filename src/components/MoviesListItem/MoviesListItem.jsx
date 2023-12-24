@@ -9,7 +9,7 @@ const MoviesListItem = ({
   const location = useLocation();
   return (
     <Wrapper>
-      <Link to={`/movies/${id}`} state={location}>
+      <Link to={`/movies/${id}`} state={{ from: location }}>
         <div>
           <img
             src={poster_path ? `${baseImageUrl}${poster_path}` : defaultImg}

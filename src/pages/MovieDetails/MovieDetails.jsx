@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'api/api';
 import { baseImageUrl } from 'api/config';
@@ -10,11 +10,13 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState();
 
-  const { state } = useLocation();
+  const location = useLocation();
+  const backBtnLink = useRef(location.state?.from ?? '/');
+
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(state ?? '/');
+    navigate(backBtnLink.current);
   };
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const MovieDetails = () => {
           <ul>
             <li>
               <NavLink to="cast">
-                <button>Cast</button>
+                <button>Cast </button>
               </NavLink>
             </li>
             <li>
