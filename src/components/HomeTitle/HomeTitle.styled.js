@@ -6,6 +6,7 @@ const Wrapper = styled('div')(() => {
 
     h1: {
       fontStyle: 'italic',
+      color: 'whitesmoke',
     },
   };
 });
